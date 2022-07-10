@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    {%load static%}
+    <link rel="icon" href= "{% static 'Media/booked.ico' %}" type="image/x-icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        tbody,a {
+            cursor: pointer;
+        }
+        .jumbotron {
+            text-align: center;
+            margin-bottom: 0%;
+            margin-top: 0%;
+        }
+        legend {
+            text-align: center;
+            margin-top: 2%;
+            font-variant: small-caps;
+        }
+        table {
+            text-align: center;
+        }
+        h5{
+            text-align: center;
+        }
+        .material-icons {
+            vertical-align: middle;
+        }
+        .fa {
+            font-size: 18px;
+        }
+        span.input-group-text {
+            width: 50px;
+            height: 40px;
+        }
+        select#gen.form-control {
+            height: 40px;
+        }
+        #mainBar ul {/*logout at end*/
+            width: 100%;
+            padding: 0;
+            display: flex;
+        }
+        #mainBar ul li {
+            display: inline;
+            box-sizing: border-box;
+        }
+        #mainBar ul li:last-child {
+            margin-left: auto;
+            text-align: right;
+            }
+        body{
+            background-color:   
+        }
+    </style>
+</head>
+<body onload="billChecker()">
+    <div class="jumbotron">
+        <h2>Payment</h2>
+    </div>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainBar" 
+        aria-controls="mainBar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="mainBar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Register</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'register' %}"">New Tenant</a>
+                    <a class="dropdown-item" href="{% url 'addtenant' %}"">Existing Tenant</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'history' %}">History</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" onclick="logout()"><i class="material-icons">input</i> Log Out</a>
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <div class = "container"><br>
+        <!--<legend>Profile</legend>
+        <div class = "row">
+            <div class = "col-md">
+                <div class = "card">
+                    <div class = "card-body">
+                        <table class="table table-hover table-bordered table-striped" style="background-color: white;">
+                            <thead class="bg-dark" style="color: white;">
+                                <th>Date</th>
+                                <th>Balance</th>
+                            </thead>
+                            <tbody id="payTable">
+                                
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-info btn-block" onclick="document.location.href='{% url 'history' %}'"
+                        ><i class="material-icons">history</i> History</button>
+                    </div>
+                </div>
+            </div>-->
+            <div class = "col-md">
+                <!--<div class = "card">
+                    <div class = "card-body">
+                        <fieldset>
+                    <div class = "form-group input-group">
+                        <span class="input-group-text"><i class="material-icons">person</i></span>
+                        <input type="text" id="name" class="form-control" value="{{ tenant.name}}" readonly
+                         data-toggle="tooltip" title="Full Name"> 
+                    <div class = "form-group input-group">
+                        <span class="input-group-text"><i class="material-icons">home</i></span>
+                        <input type="text" id="unit" class="form-control" value="{{ tenant.unit_no}}" readonly
+                         data-toggle="tooltip" title="Unit Number">
+
+                        <span class="input-group-text"><i class="material-icons">domain</i></span>
+                        <input type="text" id="prop" class="form-control" value="{{ tenant.prop_type }}" readonly
+                        data-toggle="tooltip" title="Property Type">
+                    </div>
+                    </div>-->
+                    </fieldset>
+                    <div class="row">
+                    <div class="col-md-9">
+                    <form method="POST" action="/Logbook/payupdate/{{bill.bill_id}}" enctype="multipart/form-data" onsubmit="return confirm('Pay this Bill?')">
+                        {% csrf_token %} 
+  
+                        <div class = "form-group input-group">
+                            <span class="input-group-text"><i class="material-icons">insert_invitation</i></span>
+                            <input type="text" class="form-control" id="payfor"
+                            data-toggle="tooltip" title="Payment Date" value="{{bill.date}}" disabled>
+                            <span class="input-group-text"><i class="material-icons">payment</i></span>
+                            
+                            <input type="text" class="form-control" id="payfor"
+                            data-toggle="tooltip" title="Balance" value="{{bill.balance}}" disabled>
+                        </div>
+                        <div class = "form-group input-group">
+                            <p class="input-group-text"><b>Amount</b></p>
+                            <input type="number" class="form-control" id="amount" title="amount" name="amount">
+                            <p class="input-group-text"><b>New Balance</b></p>
+                            <fieldset>
+                            {{form.balance}}
+                            </fieldset>
+                            
+                        </div>
+                        <input type="hidden" id="myVar" name="variable" value="{{bill.balance}}">
+                        <button type="submit" onclick="paymentHandler()" id="payBTN" class="btn btn-success btn-block"><i class="material-icons">payment</i> Pay</button>
+                    </form></br>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="document.location.href='{% url 'home' %}'"
+                        ><i class="material-icons">cancel</i> Cancel</button>
+                        <!---->
+                    </div>
+                <div class="col-md-3">
+                    <button id="f" class="btn btn-block btn-primary" onclick="fullPayment()">Full</button><br>
+                    <button id="p" class="btn btn-block btn-secondary" onclick="partialPayment()">Partial</button>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'JS/code.js' %}" type="text/javascript">
+        /* remove this function
+        function f() {
+        var inx = sessionStorage.getItem("index");
+        var arr = sessionStorage.getItem("data");
+        var dat = arr[inx];
+        alert(dat);*/
+        //document.getElementById("name").value = 'dat[0]';
+        /*document.getElementById("unit").value = dat[1];
+        document.getElementById("prop").value = dat[2];
+        console.log(arr);
+        console.log(inx);
+        console.log(dat);
+        }
+        f();
+        */
+    </script>
+</body>
+</html>

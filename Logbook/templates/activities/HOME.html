@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Apartment</title>
+    {%load static%}
+    <link rel="icon" href= "{% static 'Media/booked.ico' %}" type="image/x-icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        table {
+            text-align: center;
+        }
+        th,a {
+            cursor: pointer;
+        }
+        .jumbotron {
+            text-align: center;
+            margin-bottom: 0%;
+            margin-top: 0%;
+        }
+        legend {
+            text-align: center;
+            margin-top: 2%;
+            font-variant: small-caps;
+        }
+        .material-icons {
+            vertical-align: middle;
+        }
+        #mainBar ul {/*logout at end*/
+            width: 100%;
+            padding: 0;
+            display: flex;
+        }
+        #mainBar ul li {
+            display: inline;
+            box-sizing: border-box;
+        }
+        #mainBar ul li:last-child {
+            margin-left: auto;
+            text-align: right;
+            }
+        body{
+            background-color: #f2f2f2ff;
+        }
+        .input{
+            margin-right: 20%;
+        }
+        h5{
+            text-align: center;
+        }
+        .fa {
+            font-size: 18px;
+        }
+        span.input-group-text {
+            width: 50px;
+            height: 40px;
+        }
+        select#gen.form-control {
+            height: 40px;
+        }
+        .lessWidth {
+            width: 90%;
+        }
+        h3 {
+            text-align: center;
+        }
+        tr.with_border:hover {
+			border-bottom:inset 2px;
+			border-top:inset 2px;
+		}
+       
+    </style>
+</head>
+<body>
+{% block main %}
+{% endblock main %}
+</body>
+
+</html>

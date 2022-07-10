@@ -1,0 +1,88 @@
+{% extends "activities/HOME.html" %}
+{% load static %}
+{% block main %}
+
+<body onload="dataAdder()">
+    <!--this is the heading-->
+    <div class="jumbotron">
+        <h2>Apartment Logbook</h2>
+    </div>
+    <!--this is the nav toggler-->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainBar" 
+        aria-controls="mainBar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    <!--these are the items in nav bar-->
+    <div class="collapse navbar-collapse" id="mainBar">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Register</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'register' %}"">New Tenant</a>
+                    <a class="dropdown-item" href="{% url 'addtenant' %}"">Existing Tenant</a>
+                </div>
+            </li>
+            <!--<li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'history' %}">History</a>
+            </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" onclick="logout()"><i class="material-icons">input</i> Log Out</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!--this is the table of tenants-->
+    <div class="container">
+        <table id="tenants"  class="sortable table table-hover table-bordered table-striped" style="background-color: white;">
+            <legend>Tenants</legend>
+            <thead class="bg-dark" style="color: white;">
+                <th>Name</th>
+                <th>Unit No.</th>
+                <th>Balance</th>
+            </thead>
+            <tbody id="tableID">
+                {% if tens %}
+                {% for x in tens %}
+                <tr class="with_border">
+                    <td>
+                        <a href="/Logbook/profile/{{ x.id }}">{{x.first_name}} {{x.last_name}}</a>
+                    </td>
+                    <td>{{x.unit_no}}</td>
+                    <td>
+                        {{x.total_balance}}
+                    </td>
+                </tr>  <!--onclick="document.location.href=-->
+                {% endfor %}  
+
+                
+                {% else %}
+                <tr>
+                    <td colspan="3">No Tenants</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div><br><br>
+    <!--this is the bottom nav bar-->
+    <div class="container">
+        <nav class="navbar navbar-expand navbar-dark bg-dark justify-content-center fixed-bottom">
+            <ul class="navbar-nav">
+                <li>
+                    <input type="search" id="find" onkeyup="tableFilter()" class="form-control mr-sm-2 text-center" placeholder="Name or Unit #">
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <script src="{% static 'JS/code.js' %}">
+    
+</script>
+</body>    
+{% endblock main %}

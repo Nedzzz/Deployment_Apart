@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            .card {
+                margin: 0 auto;
+                float: none;
+                margin-bottom: 10px;
+            }
+            h2 {
+                text-align: center;
+                margin-bottom: 2pc;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body style="background-color: #f6f5e1;">
+        <div class="container">
+            <h2>Welcome to Crisostomo Compound</h2>
+            <div class="col-8 card ">
+                <div class="card-body">
+                    <h5><b>Good Day {{first_name}} {{last_name}}.</b></h5>
+                    <p>This email was used to make an account for Crisostomo Compound's Apartment Management System. 
+                        We will send updates like recent payments, new bills, and overdue bills to this email address.</p>
+                    
+                    <br>
+                    
+                    <legend><b>LOGIN INFORMATION:</b></legend>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><b>Username: </b></td>
+                                <td>{{username}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Password: </b></td>
+                                <td>{{password1}</td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+                    <br>
+                    <p>To access the website, please click the button below and login.</p>
+                    <div class="text-center">
+                        <form action="http://127.0.0.1:8000/Logbook/tenant">
+                            <input class="btn btn-success" type="submit" value="WELCOME">
+                        </form>
+                    </div>
+                    <br>
+                    <p>Thanks,</p>
+                    <p>-Landlord</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
