@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from calendar import month
 from mmap import PAGESIZE
 from multiprocessing import context
